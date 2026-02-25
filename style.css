@@ -1,0 +1,313 @@
+/* Variáveis de Cores */
+:root {
+    --primary-color: #132413;
+    /* Rosa Blush */
+    --secondary-color: #8da399;
+    /* Verde Sálvia */
+    --accent-color: #d4af37;
+    /* Dourado */
+    --text-color: #4a4a4a;
+    --bg-light: #f5f5f5;
+    --font-titles: 'Montserrat', serif;
+    --font-body: 'Lato', sans-serif;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--text-color);
+    background-color: #fff;
+    line-height: 1.6;
+}
+
+h2,
+h3,
+h4 {
+    font-family: "Montserrat", serif;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+/* Hero Section */
+.hero-section {
+    height: 100vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://images.unsplash.com/photo-1520854221256-17451cc331bf?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+    /* Imagem de placeholder */
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    color: white;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    /* Overlay escuro para destacar o texto */
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.hero-section h1 {
+    font-size: 5rem;
+    font-weight: 401;
+    /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); */
+}
+
+.hero-section p {
+    font-size: 1.5rem;
+    font-weight: 300;
+    /* text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4); */
+}
+
+/* Countdown */
+.countdown-item {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.countdown-item span {
+    font-weight: 700;
+}
+
+/* Section Titles */
+.section-title {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+}
+
+.title-divider {
+    width: 80px;
+    height: 3px;
+    background-color: var(--secondary-color);
+    margin: 15px auto 30px;
+}
+
+/* Cards */
+.info-card,
+.gift-card {
+    background: var(--bg-light);
+    border-radius: 15px;
+    border: 1px solid #eee;
+    transition: transform 0.3s ease;
+}
+
+.info-card:hover,
+.gift-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: #3a573a;
+    border-color: #132413;
+}
+
+.btn-outline-primary {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    animation: bounce 2s infinite;
+}
+
+.scroll-indicator span {
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 300;
+    letter-spacing: 2px;
+    animation: pulse 1.5s infinite;
+}
+
+.mouse {
+    width: 20px;
+    height: 30px;
+    border: 2px solid white;
+    border-radius: 13px;
+    position: relative;
+}
+
+.mouse::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 3px;
+    height: 6px;
+    background-color: white;
+    border-radius: 2px;
+    animation: mouseScroll 1.5s infinite;
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.7;
+    }
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}
+
+@keyframes mouseScroll {
+    0% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(10px);
+    }
+}
+
+/* Map Container and IFrame Styles */
+.map-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 75%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+.map-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 15px;
+    transition: box-shadow 0.3s ease;
+}
+
+.map-container:hover iframe {
+    box-shadow: 0 12px 35px rgba(19, 36, 19, 0.2);
+}
+
+.btn-pix {
+    text-decoration: none;
+    color: #ffffff;
+    padding: 10px 40px 10px 40px;
+    background-color: #132413;
+    border-radius: 10px;
+    transition: .3s ease;
+}
+
+.btn-pix:hover {
+    background-color: #3a573a;
+    border-color: #132413;
+    color: #fff;
+}
+
+#toast {
+    visibility: hidden;
+    min-width: 250px;
+    background-color: #132413;
+    color: #fff;
+    text-align: center;
+    border-radius: 50px;
+    padding: 12px;
+    position: fixed;
+    z-index: 1;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.9rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+#toast.show {
+    visibility: visible;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@keyframes fadein {
+    from {
+        bottom: 0;
+        opacity: 0;
+    }
+
+    to {
+        bottom: 30px;
+        opacity: 1;
+    }
+}
+
+@keyframes fadeout {
+    from {
+        bottom: 30px;
+        opacity: 1;
+    }
+
+    to {
+        bottom: 0;
+        opacity: 0;
+    }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .hero-section h1 {
+        font-size: 3rem;
+    }
+
+    .countdown-item {
+        padding: 10px;
+    }
+
+    .countdown-item span {
+        font-size: 1.2rem !important;
+    }
+
+    .scroll-indicator {
+        bottom: 20px;
+    }
+}
