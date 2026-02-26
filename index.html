@@ -4,57 +4,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maria Clara & Samuel - Nosso Casamento</title>
+    <title>Maria Clara & Samuel</title>
+
+    <meta property="og:title" content="Casamento Maria Clara & Samuel">
+    <meta property="og:description" content="Acesse o site do nosso casamento para informações, confirmação de presença e lista de presentes.">
+    <meta property="og:image" content="/img/MC&S.jpg">
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Upright:wght@400;600;700&family=Lato:wght@300;400;700&display=swap"
-        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="shortcut icon" href="/img/monograma1.png" type="image/x-icon">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        html{
+            scroll-behavior: smooth;
+        }
+    </style>
 </head>
 
 <body>
 
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark position-absolute w-100 p-3" id="home">
+        <div class="container">
+            <a class="navbar-brand" href="#home"><img src="/img/monograma1.png" alt=""></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#informacoes">INFORMAÇÕES</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#rsvp">RSVP</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#presentes">LISTA DE PRESENTES</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
     <!-- Hero Section -->
     <header class="hero-section d-flex align-items-center justify-content-center text-center">
+        <video autoplay muted loop class="hero-video">
+            <source src="bckg-hero.mp4" type="video/mp4">
+            Seu navegador não suporta vídeo HTML5
+        </video>
         <div class="hero-overlay"></div>
         <div class="container hero-content">
-            <h1 class="display-1 mb-4">MARIA CLARA & SAMUEL</h1>
+            <h1 class="display-1 mb-4">Maria Clara & Samuel</h1>
             <div style="margin-top: -30px;" class="mb-3">___________________________________________</div>
-            <p class="lead mb-5">08 de Agosto de 2026</p>
+            <p class="lead mb-5">8 DE AGOSTO DE 2026</p>
 
             <!-- Countdown Timer -->
             <div id="countdown" class="row justify-content-center g-3">
                 <div class="col-3 col-md-2">
                     <div class="countdown-item">
                         <span id="months" class="d-block h2 mb-0">00</span>
-                        <small>Meses</small>
+                        <small>MESES</small>
                     </div>
                 </div>
                 <div class="col-3 col-md-2">
                     <div class="countdown-item">
                         <span id="days" class="d-block h2 mb-0">00</span>
-                        <small>Dias</small>
+                        <small>DIAS</small>
                     </div>
                 </div>
                 <div class="col-3 col-md-2">
                     <div class="countdown-item">
                         <span id="hours" class="d-block h2 mb-0">00</span>
-                        <small>Horas</small>
+                        <small>HORAS</small>
                     </div>
                 </div>
                 <div class="col-3 col-md-2">
                     <div class="countdown-item">
                         <span id="minutes" class="d-block h2 mb-0">00</span>
-                        <small>Minutos</small>
+                        <small>MINUTOS</small>
                     </div>
                 </div>
             </div>
@@ -67,7 +100,7 @@
     </header>
 
     <!-- Info Section -->
-    <section class="info-section py-5">
+    <section class="info-section py-5" id="informacoes">
         <div class="container py-5">
             <div class="row text-center mb-5">
                 <div class="col-12">
@@ -81,10 +114,9 @@
                 <div class="col-md-6">
                     <div class="info-card p-4 h-100">
                         <h3 class="mb-4">Cerimônia</h3>
-                        <p><strong>Data:</strong> 08 de Agosto de 2026</p>
-                        <p><strong>Horário:</strong> 16:00</p>
+                        <p><strong>Horário:</strong> 19h 30</p>
                         <p><strong>Local:</strong> Paróquia Santíssima Trindade</p>
-                        <p>Praça Leonardo Gutierrez, 125 - Gutierrez, Belo Horizonte/MG</p>
+                        <p style="font-style: italic;">Praça Leonardo Gutierrez, 125 - Gutierrez, Belo Horizonte/MG</p>
 
                         <div class="map-container">
                             <iframe
@@ -98,10 +130,12 @@
                 <div class="col-md-6">
                     <div class="info-card p-4 h-100">
                         <h3 class="mb-4">Recepção</h3>
-                        <p><strong>Horário:</strong> 18:30</p>
-                        <p><strong>Local:</strong> Espaço de Eventos Solar das Palmeiras</p>
-                        <p>Av. Principal, 456 - Bairro Nobre, Cidade/UF</p>
-                        <a href="#" class="btn btn-outline-primary mt-3">Ver no Mapa</a>
+                        <p><strong>Horário:</strong> 21h 30</p>
+                        <p><strong>Local:</strong> GranVia Eventos</p>
+                        <p style="font-style: italic;">Av. Geraldo Rocha, 200 - Bairro Arvoredos, Contagem/MG</p>
+                        <div class="map-container">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3752.2302438237416!2d-44.03056732522641!3d-19.87249738150307!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa693ebda4151ef%3A0x18dfcc6d920e8a63!2sGranVia!5e0!3m2!1spt-BR!2sus!4v1772070301151!5m2!1spt-BR!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -109,18 +143,18 @@
     </section>
 
     <!-- RSVP Section -->
-    <section class="rsvp-section py-5 text-center bg-light">
+    <section class="rsvp-section py-5 text-center bg-light" id="rsvp">
         <div class="container py-5">
             <h2 class="section-title">Confirmação de Presença</h2>
-            <p class="mb-4">Sua presença é muito importante para nós. Por favor, confirme até o dia 20/09/2026.</p>
-            <a target="_blank" href="https://rsvp-natanaelgabriela.netlify.app" class="btn btn-primary btn-lg px-5">Confirmar Presença</a>
+            <p class="mb-4">Sua presença é muito importante para nós. Por favor, confirme até o dia 08/07/2026.</p>
+            <a target="_blank" href="rsvp.html" class="btn btn-primary btn-lg px-5">Confirmar Presença</a>
         </div>
     </section>
 
     <!-- Gift List Section -->
-    <section class="gift-section py-5">
+    <section class="gift-section py-5" id="presentes">
         <div class="container py-5 text-center">
-            <h2 class="section-title">Lista de Presentes</h2>
+            <h2 class="section-title">Listas de Presentes</h2>
             <div class="title-divider"></div>
             <p class="mb-5">Caso deseje nos presentear, escolhemos algumas opções para facilitar.</p>
 
@@ -128,7 +162,7 @@
                 <div class="col-md-4">
                     <div class="gift-card p-4">
                         <h4>Lista Amazon</h4>
-                        <a target="_blank" href="https://www.amazon.com.br/hz/wishlist/ls/25251RAVJ91PI?ref_=wl_share"
+                        <a target="_blank" href="#"
                             class="btn btn-outline-dark"><i style="margin-right: 15px;" class="fa-brands fa-amazon"></i>
                             Acessar Lista</a>
                     </div>
@@ -136,7 +170,7 @@
                 <div class="col-md-4">
                     <div class="gift-card p-4">
                         <h4>Lista Magalu</h4>
-                        <a target="_blank" href="https://www.querodecasamento.com.br/lista-de-casamento/natanael-gabi"
+                        <a target="_blank" href="#"
                             target="_blank" class="btn btn-outline-dark"><i style="margin-right: 15px;"
                                 class="fa-solid fa-cart-shopping"></i> Acessar Lista</a>
                     </div>
@@ -145,7 +179,8 @@
 
             <div class="mt-5 p-4 bg-light rounded">
                 <p>Caso preferir, você também pode contribuir com qualquer valor via Pix.</p>
-                <button onclick="copyPix()" class="btn-pix fw-bold mb-0"><i style="margin-right: 7px;" class="fa-brands fa-pix"></i> Copiar Chave Pix</button>
+                <button onclick="copyPix()" class="btn-pix fw-bold mb-0"><i style="margin-right: 7px;"
+                        class="fa-brands fa-pix"></i> Copiar Chave Pix</button>
             </div>
             <div id="toast">Chave pix copiada com sucesso! Estará no nome de '<u><b>Maria Clara Reis</b></u>'</div>
         </div>
@@ -153,8 +188,8 @@
 
     <!-- Footer -->
     <footer class="py-4 text-center border-top">
-        <p class="mb-0 text-muted">&copy; 2026 Maria Clara & Samuel - Desenvolvido por SE7E Identidade Visual para
-            Casamento </p>
+        <p class="mb-0 text-muted">&copy; 2026 Maria Clara & Samuel - Desenvolvido por <a target="_blank" href="https://se7eidentidadevisual.com.br/">SE7E Identidade Visual para
+            Casamento</a></p>
     </footer>
 
     <!-- Bootstrap JS -->
