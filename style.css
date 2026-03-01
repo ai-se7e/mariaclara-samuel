@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
 @font-face {
     font-family: 'handpen';
     src: url('handpen.otf') format('opentype');
@@ -18,11 +20,11 @@
     /* Rosa Blush */
     --secondary-color: #8da399;
     /* Verde Sálvia */
-    --accent-color: #d4af37;
+    --accent-color: #abb0b3;
     /* Dourado */
     --text-color: #4a4a4a;
     --bg-light: #f5f5f5;
-    --font-titles: 'handpen', serif;
+    --font-titles: 'EB Garamond', serif;
     --font-body: 'hilton', sans-serif;
 }
 
@@ -149,8 +151,8 @@ h4 {
 }
 
 .btn-primary:hover {
-    background-color: #3a573a;
-    border-color: #132413;
+    background-color: #004487;
+    border-color: #003366;
 }
 
 .btn-outline-primary {
@@ -279,7 +281,7 @@ h4 {
     margin-bottom: 20px;
 }
 
-.rsvp-section a{
+.rsvp-section a {
     background-color: var(--primary-color);
 }
 
@@ -303,27 +305,43 @@ h4 {
     color: #fff;
 }
 
-.gift-section p{
+.gift-section p {
     font-family: var(--font-titles);
     font-size: 1.1rem;
     font-weight: 600;
     letter-spacing: 1px;
 }
 
-.gift-section .gift-card h4{
+.gift-section .gift-card h4 {
     font-family: var(--font-titles);
     font-weight: 700;
     margin-bottom: 20px;
 }
 
-.gift-section .gift-card a{
+.gift-section .gift-card a {
     background-color: var(--primary-color);
-    color:#ffffff;
+    color: #ffffff;
 }
 
 .gift-section .gift-card a:hover {
-    background-color: #004487; 
+    background-color: #004487;
 }
+
+.gift-section .giftPix {
+    text-decoration: none;
+    font-family: var(--font-titles);
+    /* match the approximate width of the gift-card columns */
+    max-width: 450px;
+    width: 100%;
+    /* allow responsiveness */
+    margin: 0 auto;
+    /* center block-level element */
+    border-radius: 10px;
+    transition: .3s ease;
+    display: block;
+    /* ensure it sits on its own line */
+}
+
 
 #toast {
     visibility: hidden;
@@ -396,38 +414,109 @@ h4 {
     }
 
     .navbar .nav-link {
-        margin-left: 15px;
-        font-size: 0.85rem;
+        margin-left: 0;
+        font-size: 0.9rem;
+        padding: 10px 0;
     }
 
-    /* Mobile: esconder links e toggler; centralizar apenas a logo */
-    .navbar .navbar-collapse,
-    .navbar .navbar-nav,
-    .navbar-toggler {
-        display: none !important;
-    }
-
+    /* Mobile: Ajuste para logo à esquerda e menu à direita */
     .navbar {
-        justify-content: center;
         padding: 0.5rem 1rem;
     }
 
-    .navbar-brand {
-        margin: 0 auto;
-        left: auto;
-        transform: none;
-        position: static;
-        text-align: center;
-        padding-left: 0;
-    }
-
-    /* Ensure the container uses flex and centers content on mobile */
     .navbar .container {
         display: flex !important;
-        justify-content: center !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
         align-items: center !important;
-        padding-left: 0.5rem;
-        padding-right: 0.5rem;
+    }
+
+    .navbar-brand {
+        margin: 0 !important;
+        padding: 0 !important;
+        text-align: left !important;
+    }
+
+    .navbar-toggler {
+        display: block !important;
+        margin: 0 !important;
+        order: 2;
+    }
+
+    .navbar-brand {
+        order: 1;
+    }
+
+    /* Menu colapsável no mobile */
+    .navbar-collapse {
+        width: 100% !important;
+        order: 3;
+    }
+
+    .navbar-collapse.show {
+        background-color: rgba(0, 51, 102, 0.95);
+        border-radius: 10px;
+        margin-top: 10px;
+        padding: 15px 10px;
+    }
+
+    .navbar-nav {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .navbar-nav .nav-item {
+        width: 100%;
+    }
+
+    .navbar-nav .nav-link {
+        text-align: center;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .navbar-nav .nav-item:last-child .nav-link {
+        border-bottom: none;
+    }
+
+    /* Responsividade para páginas internas */
+    .presentes-hero,
+    .rsvp-hero {
+        min-height: 30vh;
+        padding: 40px 20px 30px;
+    }
+
+    .presentes-hero h1,
+    .rsvp-hero h1 {
+        font-size: 2rem;
+    }
+
+    .presentes-hero p,
+    .rsvp-hero p {
+        font-size: 1rem;
+    }
+
+    .rsvp-form-container {
+        margin: 30px auto;
+        padding: 20px;
+    }
+
+    .form-group label {
+        font-size: 0.9rem;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+        font-size: 0.85rem;
+        padding: 10px;
+    }
+
+    .gift-card {
+        margin-bottom: 15px;
+    }
+
+    .gift-section .gift-card h4 {
+        font-size: 1.1rem;
     }
 }
 
@@ -470,7 +559,7 @@ h4 {
 }
 
 .navbar .nav-link {
-    font-size: 0.95rem;
+    font-size: 10px;
     font-weight: 500;
     letter-spacing: 1px;
     transition: color 0.3s ease;
@@ -489,14 +578,81 @@ h4 {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
 }
 
-footer{
+footer {
     font-family: "Montserrat", serif;
     font-size: 0.8rem;
     font-weight: 550;
 }
 
-footer a{
+footer a {
     color: #132413;
-    text-decoration: none;
+    text-decoration: underline;
     font-weight: 600;
+}
+
+/* Navbar não-hero (pages internas) */
+.navbar:not(.position-absolute) {
+    background-color: #032846 !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar:not(.position-absolute) .navbar-brand img {
+    height: 80px;
+}
+
+.navbar:not(.position-absolute) .nav-link {
+    color: #fff !important;
+}
+
+.navbar:not(.position-absolute) .nav-link:hover {
+    color: var(--accent-color) !important;
+}
+
+/* Force collapsed menu styling for all screen sizes (dropdown even on desktop) */
+.navbar-collapse {
+    width: 100%;
+}
+
+.navbar .container {
+    position: relative;
+}
+
+.navbar-collapse.collapse.show {
+    background-color: #032846;
+    border-radius: 10px;
+    padding: 10px 12px;
+    position: absolute;
+    top: calc(80%);
+    right: 18px;
+    z-index: 1040;
+    width: auto;
+    min-width: 220px;
+    max-width: 340px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+}
+
+/* Remove animação de abertura/fechamento do collapse para o menu */
+.navbar-collapse,
+.navbar-collapse.collapse,
+.navbar .collapsing,
+.collapse {
+    transition: none !important;
+    -webkit-transition: none !important;
+}
+
+.navbar-nav {
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.navbar-nav .nav-link {
+    color: #fff !important;
+    padding: 10px 12px;
+    font-size: 0.85rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    text-align: left;
+}
+
+.navbar-nav .nav-item:last-child .nav-link {
+    border-bottom: none;
 }
