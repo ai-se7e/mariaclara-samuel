@@ -394,7 +394,12 @@ h4 {
 /* Responsive Adjustments */
 @media (max-width: 768px) {
     .hero-section h1 {
-        font-size: 3rem;
+        width: 100%;
+        font-size: 2.3rem;
+    }
+
+    .hero-section p {
+        font-size: 1.3rem;
     }
 
     .countdown-item {
@@ -462,7 +467,19 @@ h4 {
 
     .navbar-nav {
         flex-direction: column;
-        gap: 0;
+        align-items: stretch;
+    }
+
+    .navbar-collapse.collapse.show {
+        background-color: #032846;
+        border-radius: 10px;
+        padding: 10px 12px;
+        position: absolute;
+        top: calc(80%);
+        right: 18px;
+        z-index: 1040;
+        width: auto;
+        min-width: 220px;
     }
 
     .navbar-nav .nav-item {
@@ -485,8 +502,7 @@ h4 {
         padding: 40px 20px 30px;
     }
 
-    .presentes-hero h1,
-    .rsvp-hero h1 {
+    .presentes-hero h1 {
         font-size: 2rem;
     }
 
@@ -495,9 +511,10 @@ h4 {
         font-size: 1rem;
     }
 
+
     .rsvp-form-container {
         margin: 30px auto;
-        padding: 20px;
+        padding: 30px;
     }
 
     .form-group label {
@@ -513,6 +530,14 @@ h4 {
 
     .gift-card {
         margin-bottom: 15px;
+    }
+
+    .gift-section h2{
+        font-size: 1.8rem;
+    }
+
+    .info-section h2{
+        font-size: 1.8rem;
     }
 
     .gift-section .gift-card h4 {
@@ -641,8 +666,7 @@ footer a {
 }
 
 .navbar-nav {
-    flex-direction: column;
-    align-items: stretch;
+    align-items: center;
 }
 
 .navbar-nav .nav-link {
