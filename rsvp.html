@@ -222,7 +222,7 @@
         }
 
         @media (max-width: 768px) {
-            .lado-conteudo .nomes h1{
+            .lado-conteudo .nomes h1 {
                 font-size: 1.5rem;
             }
 
@@ -298,46 +298,56 @@
                     <div id="listaPessoas"></div>
 
                     <div class="mt-3">
-                        <label class="form-label">Confirmados para</label>
 
                         <div class="d-grid gap-2">
-                            <input type="radio" class="btn-check" name="tipoConfirmacao" id="ambos" value="Ambos"
-                                required>
-                            <label class="btn btn-outline-primary" for="ambos">
-                                Cerimônia e Recepção
-                            </label>
 
-                            <input type="radio" class="btn-check" name="tipoConfirmacao" id="cerimonia"
-                                value="Apenas Cerimonia">
-                            <label class="btn btn-outline-primary" for="cerimonia">
-                                Apenas Cerimônia
-                            </label>
-                        </div>
+                            <!-- OPÇÃO PRINCIPAL -->
+                            <div class="mt-3">
+                                <label class="form-label">Irá à cerimônia?</label>
+                                <div class="d-grid gap-2">
 
-                    </div>
+                                    <!-- SIM -->
+                                    <input type="radio" class="btn-check" name="tipoConfirmacao" id="simCerimonia"
+                                        value="Sim" required>
+                                    <label class="btn btn-outline-primary" for="simCerimonia">
+                                        Sim, irei à cerimônia
+                                    </label>
 
-                    <div class="mt-3">
-                        <label class="form-label">Anexar comprovante</label>
-                        <input type="file" id="comprovante" class="form-control" required>
-                    </div>
+                                    <!-- NÃO -->
+                                    <input type="radio" class="btn-check" name="tipoConfirmacao" id="naoCerimonia"
+                                        value="Nao">
+                                    <label class="btn btn-outline-secondary" for="naoCerimonia">
+                                        Não poderei comparecer
+                                    </label>
 
-                    <div class="alert alert-light border mt-4 attention-alert d-flex align-items-center">
-                        <i class="bi bi-exclamation-triangle-fill me-3" style="font-size: 30px;"></i>
-                        <div>
-                            <strong>Atenção:</strong> Ao clicar em <u><b>Confirmar Presença</b></u>, aguarde a
-                            mensagem de confirmação de envio.
-                        </div>
-                    </div>
+                                </div>
+                            </div>
 
-                    <button type="submit" class="btn-confirmar w-100">Confirmar Presença</button>
+                            <!-- RECEPÇÃO (REMOVIDA) -->
+                            <!--
+                                <input type="radio" class="btn-check" name="tipoConfirmacao" id="ambos" value="Ambos">
+                                <label class="btn btn-outline-primary" for="ambos">
+                                    Cerimônia e Recepção
+                                </label>
+                                -->
 
-                    <div class="progress-envio">
-                        <div id="barraEnvio" class="progress-bar-envio"></div>
-                    </div>
+                            <div class="alert alert-light border mt-4 attention-alert d-flex align-items-center">
+                                <i class="bi bi-exclamation-triangle-fill me-3" style="font-size: 30px;"></i>
+                                <div>
+                                    <strong>Atenção:</strong> Ao clicar em <u><b>Confirmar Presença</b></u>, aguarde a
+                                    mensagem de confirmação de envio.
+                                </div>
+                            </div>
 
-                    <div id="mensagemSucesso" class="alert alert-success mt-3">
-                        <i class="bi bi-check"></i> Presença confirmada com sucesso
-                    </div>
+                            <button type="submit" class="btn-confirmar w-100">Confirmar Presença</button>
+
+                            <div class="progress-envio">
+                                <div id="barraEnvio" class="progress-bar-envio"></div>
+                            </div>
+
+                            <div id="mensagemSucesso" class="alert alert-success mt-3">
+                                <i class="bi bi-check"></i> Presença confirmada com sucesso
+                            </div>
                 </form>
             </div>
         </div>
@@ -351,6 +361,7 @@
 
     <script>
         const URL_SCRIPT = "https://script.google.com/macros/s/AKfycbzo4LDssY6qKhErHR5bQpTkelu63Z1_RePTs9QSNfX7HTJS6gYGrE4gaTATYtVczkEu/exec";
+
         const quantidadeSelect = document.getElementById("quantidadePessoas");
         const listaPessoas = document.getElementById("listaPessoas");
         const form = document.getElementById("formRSVP");
@@ -359,87 +370,138 @@
         const progressoEnvio = document.querySelector(".progress-envio");
         const botaoConfirmar = document.querySelector(".btn-confirmar");
 
+        // ============================
+        // GERAR CAMPOS DE PESSOAS
+        // ============================
         quantidadeSelect.addEventListener("change", function () {
             const quantidade = parseInt(this.value) || 0;
             listaPessoas.innerHTML = "";
+
             for (let i = 1; i <= quantidade; i++) {
                 listaPessoas.innerHTML += `
-                    <div class="row mb-2">
-                        <div class="col-md-7 mb-2">
-                            <input type="text" class="form-control nomePessoa" placeholder="Nome completo ${i}" required>
-                        </div>
-                        <div class="col-md-5">
-                            <select class="form-control tipoPessoa">
-                                <option value="adulto">Adulto</option>
-                                <option value="crianca">Criança</option>
-                            </select>
-                        </div>
-                    </div>`;
+            <div class="row mb-2">
+                <div class="col-md-7 mb-2">
+                    <input type="text" class="form-control nomePessoa" placeholder="Nome completo ${i}" required>
+                </div>
+                <div class="col-md-5">
+                    <select class="form-control tipoPessoa">
+                        <option value="adulto">Adulto</option>
+                        <option value="crianca">Criança</option>
+                    </select>
+                </div>
+            </div>`;
             }
         });
 
+        // ============================
+        // SE MARCAR "NÃO"
+        // ============================
+        document.querySelectorAll('input[name="tipoConfirmacao"]').forEach(radio => {
+            radio.addEventListener("change", function () {
+
+                if (this.value === "Nao") {
+                    quantidadeSelect.value = "";
+                    listaPessoas.innerHTML = "";
+                }
+
+            });
+        });
+
+        // ============================
+        // ENVIO DO FORM
+        // ============================
         form.addEventListener("submit", function (e) {
             e.preventDefault();
-            const arquivo = document.getElementById("comprovante").files[0];
-            if (!arquivo) return alert("Anexe o comprovante.");
-
-            const nomesInputs = document.querySelectorAll(".nomePessoa");
-            const tipos = document.querySelectorAll(".tipoPessoa");
-            let nomes = []; let adultos = 0; let criancas = 0;
-
-            nomesInputs.forEach((input, i) => {
-                nomes.push(input.value);
-                if (tipos[i].value === "adulto") adultos++; else criancas++;
-            });
 
             const tipoConfirmacao = document.querySelector('input[name="tipoConfirmacao"]:checked')?.value;
+
+            let nomes = [];
+            let adultos = 0;
+            let criancas = 0;
+
+            // ============================
+            // SE FOR "SIM", COLETA DADOS
+            // ============================
+            if (tipoConfirmacao === "Sim") {
+
+                const nomesInputs = document.querySelectorAll(".nomePessoa");
+                const tipos = document.querySelectorAll(".tipoPessoa");
+
+                nomesInputs.forEach((input, i) => {
+                    nomes.push(input.value);
+
+                    if (tipos[i].value === "adulto") adultos++;
+                    else criancas++;
+                });
+
+            }
+
+            // ============================
+            // COMPROVANTE (REMOVIDO)
+            // ============================
+            /*
+            const arquivo = document.getElementById("comprovante").files[0];
+            if (!arquivo) return alert("Anexe o comprovante.");
+        
             const reader = new FileReader();
             reader.readAsDataURL(arquivo);
+            */
 
-            reader.onload = function () {
-                progressoEnvio.style.display = "block";
-                barraEnvio.style.width = "0%";
+            progressoEnvio.style.display = "block";
+            barraEnvio.style.width = "0%";
 
-                let progresso = 0;
+            let progresso = 0;
+            botaoConfirmar.disabled = true;
 
-                botaoConfirmar.disabled = true;
+            const animacao = setInterval(() => {
+                if (progresso < 90) {
+                    progresso += Math.random() * 5 + 1;
+                    barraEnvio.style.width = progresso + "%";
+                }
+            }, 200);
 
-                const animacao = setInterval(() => {
-                    if (progresso < 90) {
-                        progresso += Math.random() * 5 + 1; // incrementa de forma aleatória para parecer mais natural
-                        barraEnvio.style.width = progresso + "%";
+            // ============================
+            // ENVIO
+            // ============================
+            const formData = new FormData();
+            formData.append("nome", nomes.join(", "));
+            formData.append("adultos", adultos);
+            formData.append("criancas", criancas);
+            formData.append("confirmadosPara", tipoConfirmacao);
+
+            /*
+            formData.append("comprovanteBase64", base64);
+            formData.append("nomeArquivo", arquivo.name);
+            formData.append("tipoArquivo", arquivo.type);
+            */
+
+            fetch(URL_SCRIPT, {
+                method: "POST",
+                body: formData
+            })
+                .then(r => r.json())
+                .then(data => {
+                    clearInterval(animacao);
+                    barraEnvio.style.width = "100%";
+
+                    if (data.status === "sucesso") {
+                        botaoConfirmar.disabled = false;
+                        mensagemSucesso.style.display = "block";
+
+                        form.reset();
+                        listaPessoas.innerHTML = "";
+
+                        setTimeout(() => {
+                            mensagemSucesso.style.display = "none";
+                            progressoEnvio.style.display = "none";
+                            barraEnvio.style.width = "0%";
+                        }, 3000);
+
+                    } else {
+                        alert(data.mensagem);
                     }
-                }, 200);
-
-                const base64 = reader.result.split(",")[1];
-                const formData = new FormData();
-                formData.append("nome", nomes.join(", "));
-                formData.append("adultos", adultos);
-                formData.append("criancas", criancas);
-                formData.append("confirmadosPara", tipoConfirmacao);
-                formData.append("comprovanteBase64", base64);
-                formData.append("nomeArquivo", arquivo.name);
-                formData.append("tipoArquivo", arquivo.type);
-
-                fetch(URL_SCRIPT, { method: "POST", body: formData })
-                    .then(r => r.json())
-                    .then(data => {
-                        clearInterval(animacao);
-                        barraEnvio.style.width = "100%";
-                        if (data.status === "sucesso") {
-                            botaoConfirmar.disabled = false;
-                            mensagemSucesso.style.display = "block";
-                            form.reset();
-                            listaPessoas.innerHTML = "";
-                            setTimeout(() => {
-                                mensagemSucesso.style.display = "none";
-                                progressoEnvio.style.display = "none";
-                                barraEnvio.style.width = "0%";
-                            }, 3000);
-                        } else alert(data.mensagem);
-                    })
-                    .catch(() => alert("Erro ao enviar."));
-            };
+                })
+                .catch(() => alert("Erro ao enviar."));
         });
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
