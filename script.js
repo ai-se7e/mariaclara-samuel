@@ -50,7 +50,7 @@ window.addEventListener('scroll', function () {
 
 function copyPix() {
     // COLOQUE SUA CHAVE PIX AQUI
-const pixKey = "3186904351";
+const pixKey = "31986904351";
             
     navigator.clipboard.writeText(pixKey).then(() => {
         const toast = document.getElementById("toast");
